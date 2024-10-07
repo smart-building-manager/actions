@@ -57,6 +57,7 @@ runs:
     - shell: bash
       env:
         INPUTS_VERSION: ${{ inputs.version }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         cd /tmp/version
         git commit -am "Bump ${{ steps.validate-input.outputs.key-description }} to $INPUTS_VERSION"
