@@ -37,6 +37,11 @@ runs:
         fi
 
     - shell: bash
+      run: |
+        git config --global user.email "fuadnafiz98@gmail.com"
+        git config --global user.name "fuadnafiz98"
+
+    - shell: bash
       run: git clone --depth 1 https://github.com/my-smart-homes/version.git /tmp/version
 
     - shell: bash
