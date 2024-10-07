@@ -1,21 +1,21 @@
-name: 'Home Assistant helper: version-push'
-description: 'GitHub action helper: version-push'
+name: "Home Assistant helper: version-push"
+description: "GitHub action helper: version-push"
 inputs:
   key:
     required: true
-    default: ''
+    default: ""
     description: "JSON key to replace version with, e.g. supervisor, homeassistant.default or hassos[] to replace for all properties in hassos."
   key-description:
     required: false
     description: "Human Friendly description of key which is beeing changed for git commit message."
   version:
     required: true
-    default: ''
+    default: ""
   channel:
-    default: 'dev'
+    default: "dev"
 runs:
   using: "composite"
-  steps: 
+  steps:
     - shell: bash
       id: validate-input
       env:
@@ -37,7 +37,7 @@ runs:
         fi
 
     - shell: bash
-      run: git clone --depth 1 https://github.com/home-assistant/version.git /tmp/version
+      run: git clone --depth 1 https://github.com/my-smart-home/version.git /tmp/version
 
     - shell: bash
       env:
