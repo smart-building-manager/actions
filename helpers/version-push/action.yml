@@ -13,6 +13,10 @@ inputs:
     default: ""
   channel:
     default: "dev"
+  git-token:
+    required: true
+    description: "GitHub token for authentication"
+
 runs:
   using: "composite"
   steps:
@@ -35,9 +39,15 @@ runs:
         else
           echo "key-description=$INPUTS_KEY_DESCRIPTION" >> "$GITHUB_OUTPUT"
         fi
-
+        
     - shell: bash
-      run: git clone --depth 1 https://github.com/my-smart-homes/version.git /tmp/version
+      run: |
+        git config --global user.email "37500414+naimurhasan@users.noreply.github.com"
+        git config --global user.name "naimurhasan"
+    - shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.git-token }}
+      run: git clone --depth 1 https://naimurhasan:${{ inputs.git-token }}@github.com/my-smart-homes/version.git /tmp/version
 
     - shell: bash
       env:
@@ -55,7 +65,7 @@ runs:
       run: |
         cd /tmp/version
         git commit -am "Bump ${{ steps.validate-input.outputs.key-description }} to $INPUTS_VERSION"
-        git push
+        git push -u origin master
 
     - shell: bash
       run: rm -rf /tmp/version
