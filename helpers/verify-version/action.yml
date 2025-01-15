@@ -6,7 +6,7 @@ inputs:
     required: false
     default: false
   ignore-master:
-    description: Skip check if the branch is 'master'
+    description: Skip check if the branch is 'master-bhesh'
     required: false
     default: false
 runs:
