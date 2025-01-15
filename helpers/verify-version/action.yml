@@ -20,6 +20,9 @@ runs:
         REF: ${{ github.event_name == 'release' && github.event.release.tag_name || github.ref }}
         UV_SYSTEM_PYTHON: "true"
       run: |
+         # Create and activate virtual environment
+        python3 -m venv .venv
+        source .venv/bin/activate
         pip install uv
         uv pip install tomli
         setup_version="$(python3 $ACTION_PATH/../read_version.py)"
