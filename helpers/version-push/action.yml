@@ -47,7 +47,7 @@ runs:
     - shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.git-token }}
-      run: git clone --depth 1 https://naimurhasan:${{ inputs.git-token }}@github.com/my-smart-homes/version.git /tmp/version
+      run: git clone --depth 1 https://naimurhasan:${{ inputs.git-token }}@github.com/smart-building-manager/version.git /tmp/version
 
     - shell: bash
       env:
